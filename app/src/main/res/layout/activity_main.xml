@@ -11,18 +11,32 @@
     android:paddingRight="20dp"
     android:paddingBottom="30dp"
     tools:context=".MainActivity">
-    <Button
-        android:clickable="false"
+
+    <TextView
+        android:gravity="center"
         android:id="@+id/p1score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/p1score"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:textSize="20sp"
         android:textColor="@android:color/black"
         android:rotation="-180"
-        android:background="@android:color/white"
+
         />
+    <TextView
+
+        android:id="@+id/status1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Play"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:rotation="-180"
+        android:paddingTop="20dp"
+        />
+
     <Button
         android:id="@+id/btnPlayer1"
         android:layout_width="match_parent"
@@ -103,15 +117,25 @@
         android:textColor="@android:color/white"
 
         />
-    <Button
+    <TextView
+        android:id="@+id/status2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Play"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:paddingTop="20dp"
+        />
+
+    <TextView
+        android:gravity="center"
         android:id="@+id/p2score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/p1score"
-        android:paddingTop="20dp"
+        android:paddingTop="10dp"
         android:textSize="20sp"
         android:textColor="@android:color/black"
-        android:background="@android:color/white"
-        android:clickable="false"
         />
 </LinearLayout>
