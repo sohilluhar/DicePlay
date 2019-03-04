@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Dice Play</string>
-    <string name="p1score">Score : 0</string>
+    <string name="p1score">Total Win: : 0</string>
 </resources>

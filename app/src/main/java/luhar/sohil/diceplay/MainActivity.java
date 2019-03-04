@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     boolean player1,player2;
@@ -32,9 +34,18 @@ public class MainActivity extends AppCompatActivity {
 
     int p1c,p2c;
 
+    int dicearr[]={
+            R.drawable.dice1,
+            R.drawable.dice2,
+            R.drawable.dice3,
+            R.drawable.dice4,
+            R.drawable.dice5,
+            R.drawable.dice6
+    };
+
     Button btnplayer1,btnplayer2;
     ImageView imgp1d1,imgp1d2,imgp2d1,imgp2d2;
-    TextView tvp1,tvp2,txtp1score,txtp2score;
+    TextView tvp1,tvp2,txtp1score,txtp2score,p1dscore,p2dscore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
         tvp1=(TextView) findViewById(R.id.status1);
         tvp2=(TextView) findViewById(R.id.status2);
+        p1dscore=(TextView) findViewById(R.id.p1dscore);
+        p2dscore=(TextView) findViewById(R.id.p2dscore);
 
 
 
@@ -70,14 +83,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 player1=true;
-                Log.d("p1c",p1c+"");
+
                 if(p1c==p2c||p1c+1==p2c){
                 p1c++;
-
-                scorep1=10;
+                rolldice1();
                 check();
                 }
-                Log.d("p1c",p1c+"");
+
             }
         });
 
@@ -87,16 +99,38 @@ public class MainActivity extends AppCompatActivity {
 
 
                 player2=true;
-                Log.d("p2count",p2c+"");
+
                 if(p1c==p2c||p2c+1==p1c){
                 p2c++;
-
-                scorep2=6;
+                rolldice2();
                 check();
                 }
             }
         });
 
+    }
+
+    private void rolldice1() {
+        Random num=new Random();
+        int d1=num.nextInt(6);
+        int d2=num.nextInt(6);
+        scorep1=d1+d2;
+
+        String temp="Score: "+(scorep1+2);
+        p1dscore.setText(temp);
+        imgp1d1.setImageResource(dicearr[d1]);
+        imgp1d2.setImageResource(dicearr[d2]);
+    }
+
+    private void rolldice2() {
+        Random num=new Random();
+        int d1=num.nextInt(6);
+        int d2=num.nextInt(6);
+        scorep2=d1+d2;
+        String temp="Score: "+(scorep2+2);
+        p2dscore.setText(temp);
+        imgp2d1.setImageResource(dicearr[d1]);
+        imgp2d2.setImageResource(dicearr[d2]);
     }
 
     private void check() {
@@ -113,8 +147,8 @@ public class MainActivity extends AppCompatActivity {
             if (scorep1 > scorep2) {
                 finscrp1++;
 
-                p1=new StringBuffer("Score: ");
-                p2=new StringBuffer("Score:");
+                p1=new StringBuffer("Total Win: ");
+                p2=new StringBuffer("Total Win: ");
                 p1.append(finscrp1);
                 p2.append(finscrp2);
 
@@ -127,7 +161,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
             else if (scorep2==scorep1){
-
                 tvp1.setText(tie);
                 tvp2.setText(tie);
             }
@@ -136,8 +169,8 @@ public class MainActivity extends AppCompatActivity {
                 finscrp2++;
 
 
-                p1=new StringBuffer("Score: ");
-                p2=new StringBuffer("Score:");
+                p1=new StringBuffer("Total Win: ");
+                p2=new StringBuffer("Total Win: ");
                 p1.append(finscrp1);
                 p2.append(finscrp2);
 
