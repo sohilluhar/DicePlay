@@ -1,6 +1,6 @@
 # DicePlay
 
-#Andoid App
+# Andoid App
 
 This is simple Dice app implemented in Android Studio
 
